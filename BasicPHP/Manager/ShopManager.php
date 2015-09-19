@@ -1,12 +1,14 @@
 <?php
 include_once('../Objects/Shop.php');
+include_once('../DataAccess/DataAccessHelper.php');
 class ShopManager{
 	public $DataBaseHelper=NULL;
 	
 	public static function InsertShop($ShopObject){
 		$DataBaseHelper=new DataAccessHelper();
 		$sql="INSERT INTO `shop` (`shop_name`, `shop_address`, `shop_description`,`shop_type_id`,`date_time`,`user_id`) VALUES ('".$ShopObject->getShopName()."','".$ShopObject->getSAddress()."', '".$ShopObject->getSDesc()."','".$ShopObject->getSTid()."','".$ShopObject->getDate()."','".$ShopObject->getUserID()."')"; // You have to write a insert query for MySQL using the Data from $UserObject; 
-		//An Example of this can be like this : $sql="INSERT INTO `user` (`name`, `password`, `email`) VALUES ('".$User->getUserName()."','".$User->getPassWord()."', '".$User->getEmailAddress()."')";
+		
+				echo $sql;
 		return $DataBaseHelper->ExecuteInsertReturnID($sql);
 	}
 	

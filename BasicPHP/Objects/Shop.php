@@ -59,7 +59,7 @@ class Shop {
 		return $this->user_id;
 	}
 	
-	public function Shop($shop_id,$shop_name,$shop_address,$shop_description,,$shop_type_id,$date_time,$user_id){
+	public function Shop($shop_id,$shop_name,$shop_address,$shop_description,$shop_type_id,$date_time,$user_id){
 		$this->setShopID($shop_id);
 		$this->setShopName($shop_name);
 		$this->setSAddress($shop_address);
