@@ -23,14 +23,14 @@ class User {
 	/*Please complete the coding for other private variables*/
 	/*After that in the same way write class for Shop*/
 	
-	public function setPass($uer_pass){
+	public function setPass($user_pass){
 		$this->user_pass=$user_pass;
 	}
 	public function getPass(){
 		return $this->user_pass;
 	}
 	
-	public function setEmail($uer_email){
+	public function setEmail($user_email){
 		$this->user_email=$user_email;
 	}
 	public function getEmail(){
@@ -44,7 +44,14 @@ class User {
 		return $this->date_time;
 	}
 	
-	
+	public function User($user_id,$uer_name,$user_pass,$user_email,$date_time){
+		$this->setUserID($user_id);
+		$this->setUserName($uer_name);
+		$this->setPass($user_pass);
+		$this->setEmail($user_email);
+		$this->setDate($date_time);
+		return $this;
+	}
 	
 }
 ?>

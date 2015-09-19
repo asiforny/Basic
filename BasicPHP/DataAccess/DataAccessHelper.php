@@ -1,5 +1,4 @@
 <?php
-include_once '../DataAccess/DataAccessHelper.php';
 class DataAccessHelper{
 	public static function ExecuteInsertReturnID($object){
 		/*
