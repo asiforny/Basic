@@ -30,8 +30,16 @@ class Shop {
 		return $this->shop_address;
 	}
 	
+	public function setSDesc($shop_description){
+		$this->shop_description=$shop_description;
+	}
+	public function getSDesc(){
+		return $this->shop_description;
+	}
+	
 	public function setSTid($shop_type_id){
 		$this->shop_type_id=$shop_type_id;
+		
 	}
 	public function getSTid(){
 		return $this->shop_type_id;
@@ -49,6 +57,17 @@ class Shop {
 	}	
 	public function getUserID(){
 		return $this->user_id;
+	}
+	
+	public function Shop($shop_id,$shop_name,$shop_address,$shop_description,,$shop_type_id,$date_time,$user_id){
+		$this->setShopID($shop_id);
+		$this->setShopName($shop_name);
+		$this->setSAddress($shop_address);
+		$this->setSDesc($shop_description);
+		$this->setSTid($shop_type_id);
+		$this->setDate($date_time);
+		$this->setUserID($user_id);
+		return $this;
 	}
 	
 	
