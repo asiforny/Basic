@@ -1,5 +1,5 @@
 <?php
-class User {
+class Shop {
 	private $shop_id;
 	private $shop_name;
 	private $shop_address;
