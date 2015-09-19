@@ -6,7 +6,7 @@ class UserManager{
 
 	public static function InsertUser($UserObject){
 		$DataBaseHelper=new DataAccessHelper();
-		$sql="INSERT INTO `user` (`user_name`, `user_pass`, `user_email`,`date_time`) VALUES ('".$UserObject->getUserName()."','".$UserObject->getPassWord()."', '".$UserObject->getEmailAddress()."','".$UserObject->getDateTime()."')"; 
+		$sql="INSERT INTO `user` (`user_name`, `user_pass`, `user_email`,`date_time`) VALUES ('".$UserObject->getUserName()."','".$UserObject->getPass()."', '".$UserObject->getEmail()."','".$UserObject->getDate()."')"; 
 		
 		echo $sql;
 			
@@ -21,7 +21,7 @@ class UserManager{
 	
 	public static function Update($UserObject){
 		$DataBaseHelper=new DataAccessHelper();
-		$sql="UPDATE `user` SET user_name='".$UserObject->getUserName()."', user_pass='".$UserObject->getPassWord()."',user_email = '".$UserObject->getEmailAddress()."', date_time = '".$UserObject->getDateTime()."' WHERE user_id = '".$UserObject->getUserID()."'"; // Write your Query here
+		$sql="UPDATE `user` SET user_name='".$UserObject->getUserName()."', user_pass='".$UserObject->getPass()."',user_email = '".$UserObject->getEmail()."', date_time = '".$UserObject->getDate()."' WHERE user_id = '".$UserObject->getUserID()."'"; // Write your Query here
 		return $DataBaseHelper->ExecuteQuery($sql);
 	}
 	
