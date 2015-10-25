@@ -13,7 +13,6 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=product_grid_con
 	foreach($item->find('p[class=product-title]') as $title){	
 			$SingleProduct->SetProductName($title);
 	}
-
 	
 	foreach($item->find('div[class=product-price]') as $priceData){	
 

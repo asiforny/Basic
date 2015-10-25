@@ -14,8 +14,6 @@ private $_product_features;
 private $_product_category;
 private $_product_sub_category;
 
-
-
 public function SetProductId($productid){
 	$this->_product_id=$productid;
 }
