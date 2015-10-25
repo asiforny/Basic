@@ -1,135 +1,103 @@
 <?php 
-error_reporting(0);
-class products{
-	
-private $product_name;  
-private $product_price;  
-private $discount; 
-private $emi_availablity; 
-private $emi_rate;
-private $type;
-private $capacity_;
-private $key_features;
-private $image;
-private $category_name;
-private $sub_category_name;
 
-public function Set($key){
-	$this->key=$key;
-}
-public function Get(){
-	return $var;
-}	
+class product{
 
-public function  SetProductName($product_name){
-	$this->product_name=$$product_name;
+private $_product_id;
+private $_product_name;	
+private $_product_details;
+private $_product_price;
+private $_product_price_before_discount;
+private $_product_discount_details;
+private $_product_has_emi;
+private $_product_emai_details;
+private $_product_features;
+private $_product_category;
+private $_product_sub_category;
+
+
+
+public function SetProductId($productid){
+	$this->_product_id=$productid;
 }
-public function  GetProductName(){
-	return $this->product_name;
+public function getProductId(){
+	return $this->_product_id;
 }
 
-public function SetProductPrice($product_price){
-	$this->product_price=$product_price;
+public function SetProductName($name){
+	$this->_product_name=$name;
 }
-public function getProductPrice(){
-	return $this->product_price;
-}	
-
-public function Setdiscount($discount){
-	$this->discount=$discount;
-}
-public function Getdiscount(){
-	return $this->discount;
+public function GetProductName(){
+	return $this->_product_name;
 }
 	
-public function SetEMIAV($emi_availablity){
-	$this->emi_availablity=$emi_availablity;
+public function  SetProductDetails($productdetails){
+	$this->_product_details=$productdetails;
 }
-public function GetEMIAV(){
-	return $this->emi_availablity;
-}
-
-
-public function SetEMIR($emi_rate){
-	$this->emi_rate=$emi_rate;
-}
-public function GetEMIR(){
-	return $this->emi_rate;
+public function  GetProductDetails(){
+	return $this->_product_details;
 }
 
-public function SetType($type){
-	$this->type=$type;
+public function SetProductPrice($price){
+	$this->_product_price=$price;
 }
-public function GetType(){
-	return $this->type;
-}	
-
-
-public function SetCapacity($capacity_){
-	$this->capacity_=$capacity_;
-}
-public function GetCapacity(){
-	return $this->capacity_;
-}	
-
-public function SetKeyf($key_features){
-	$this->key_features=$key_features;
-}
-public function GetKeyf(){
-	return $this->key_features;
-}	
-
-public function SetImage($image){
-	$this->image=$image;
-}
-public function GetImage(){
-	return $this->image;
-}	
-
-
-public function SetCatN($category_name){
-	$this->category_name=$category_name;
-}
-public function GetCatN(){
-	return $this->category_name;
-}	
-
-
-public function SetSCatN($sub_category_name){
-	$this->sub_category_name=$sub_category_name;
-}
-public function GetSCatN(){
-	return $this->sub_category_name;
-}	
-
-
-public function products($product_name,$product_price,$discount,$emi_availablity,$emi_rate,$type,$capacity_,$key_features,$image,$category_name,$sub_category_name){
-		$this->SetProductName($$product_name);
-		$this->SetProductPrice($product_price);
-		$this->Setdiscount($discount);
-		$this->SetEMIAV($emi_availablity);
-		$this->SetEMIR($emi_rate);
-		$this->SetType($type);
-		$this->SetCapacity($capacity_);
-		$this->SetKeyf($key_features);
-		$this->SetImage($image);
-		$this->SetCatN($category_name);
-		$this->SetSCatN($sub_category_name);
-		return $this;
-
-
-
+public function GetProductPrice(){
+	return $this->_product_price;
 }
 
+public function SetProductBeforeDiscounePrice($before_discount_price){
+	$this->_product_price_before_discount=$before_discount_price;
+}
+public function GetProductBeforeDiscounePrice(){
+	return $this->_product_price_before_discount;
+}
 
+public function SetDiscountDetails($discount_details){
+	$this->_product_discount_details=$discount_details;
+}
+public function GetDiscountDetails(){
+	return $this->_product_discount_details;
+}
 
+public function SetEmi($isEmi){
+	$this->_product_has_emi=$isEmi;
+}
+public function GetEmi(){
+	return $this->_product_has_emi; 
+}
 
+public function SetEmiDetails($emidetails){
+	return $this->_product_emai_details=$emidetails;
+}
+public function GetEmiDetails(){
+	return $this->_product_emai_details;
+}
 
+public function SetProductCategory($category){
+	$this->_product_category=$category;
+}
+public function GetProductCategory($category){
+	return $this->_product_category;
+}
+
+public function SetProductSubCategory($product_sub_category){
+	$this->_product_sub_category=$product_sub_category;
+}
+public function GetProduSetProductSubCategoryct(){
+	return $this->_product_sub_category;
+}
+
+public function SetProductFeatures($features){
+	$this->_product_features=$features;
+}
+public function GetProductFeatures(){
+	return $this->_product_features;
+}
+
+function __construct(){
 	
-
 }
 
 
-
+}
 
 ?>

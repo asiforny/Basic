@@ -7,12 +7,13 @@ $url="file:///C:/xampp/htdocs/scrapping/snapdeal/app/testhtml.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
-
-foreach($innerHtml->find('div[class=product_grid_row] div[class=product_grid_cont hoverProdCont4Grid gridLayout4] div[class=productWrapper] div[class=hoverProductWrapper product-txtWrapper]') as $item){
+foreach($innerHtml->find('div[class=product_grid_row] div[class=product_grid_cont hoverProdCont4Grid gridLayout4] div[class=productWrapper] div[class=hoverProductWrapper product-txtWrapper]') as $item)
+{
 	$SingleProduct=new product();
 	foreach($item->find('p[class=product-title]') as $title){	
 			$SingleProduct->SetProductName($title);
 	}
+
 	
 	foreach($item->find('div[class=product-price]') as $priceData){	
 
@@ -25,25 +26,24 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=product_grid_con
 			$SingleProduct->SetProductBeforeDiscounePrice($before_dis_price);
 			$SingleProduct->SetDiscountDetails($dis_percent);
 		}
-		
-//		echo $SingleProduct->GetProductPrice()."dis-price".$SingleProduct->GetProductBeforeDiscounePrice()."dis_percen".$SingleProduct->GetDiscountDetails()."</br>";     
-		
 		if($priceData->find("p[class=emiMonthsHoverGrid]",0)!=NULL){
 			$SingleProduct->SetEmi("1");
-			
 			$emidetails=$priceData->find("p[class=emiMonthsHoverGrid]",0)->plaintext;
-			
 			$SingleProduct->SetEmiDetails($emidetails);
-			
 			echo $priceData->find("p[class=emiMonthsHoverGrid]",0)->plaintext;
-			
-		}
-			
+		}			
 	}
 	
-	$features=$item->find("div[class=lfloat product_list_view_highlights]",0)->plaintext;
-	$SingleProduct->SetProductFeatures($features);
-	echo $SingleProduct->GetProductPrice()."dis-price".$SingleProduct->GetProductBeforeDiscounePrice()."dis_percen".$SingleProduct->GetDiscountDetails()."</br>"."EMI Has:".$SingleProduct->GetEmi()."EMI Details".$SingleProduct->GetEmiDetails()."Features : ".$features;
+	$features=$item->find("div[class=lfloat product_list_view_highlights]",0);
+	echo $features;
+	$i=0;
+	foreach ($features->find('ul[id=highLights] li') as $feature_item){
+		echo "item ".$i."-->".$feature_item."</br>";
+		$i++;
+	}
+	
+	$SingleProduct->SetProductFeatures($features->plaintext);
+	echo $SingleProduct->GetProductPrice()."dis-price".$SingleProduct->GetProductBeforeDiscounePrice()."dis_percen".$SingleProduct->GetDiscountDetails()."</br>"."EMI Has:".$SingleProduct->GetEmi()."EMI Details".$SingleProduct->GetEmiDetails()."Features : ".$SingleProduct->GetProductFeatures();
 }
 
 
