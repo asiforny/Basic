@@ -88,7 +88,7 @@ public function SetProductFeatures($features){
 	$this->_product_features=$features;
 }
 public function GetProductFeatures(){
-	$this->_product_features;
+	return $this->_product_features;
 }
 
 function __construct(){
