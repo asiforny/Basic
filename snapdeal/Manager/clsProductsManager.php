@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-include_once('../objects/clsProducts.php');
+include_once('../objects/clsProduct.php');
 include_once('../DataAccess/DataaccessHelper.php');
 class clsProductsManager{
 	public $DataBaseHelper=NULL;
