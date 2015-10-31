@@ -71,7 +71,7 @@ public function SetProductFeatures($_product_features){
 	$this->_product_features=$_product_features;
 }
 public function GetProductFeatures(){
-	$this->_product_features;
+	return $this->_product_features;
 }
 
 
@@ -101,7 +101,7 @@ public function SetProductDetailUrl($_product_detail_url){
 	$this->_product_detail_url=$_product_detail_url;
 }
 public function GetProductDetailUrl(){
-	$this->_product_detail_url;
+	return $this->_product_detail_url;
 }
 
 function __construct(){

@@ -1,14 +1,13 @@
-
 <?php
 
-class databaseHelper
+class DataaccessHelper
 {
 
 
          public  $host = 'localhost';
          public  $user = 'root';
          public  $pass = '';
-         public  $db = 'indiamart';
+         public  $db = 'snapdeal';
 
   
      
