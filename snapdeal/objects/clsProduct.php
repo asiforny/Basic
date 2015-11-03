@@ -14,6 +14,7 @@ private $_img_url;
 private $_product_category;
 private $_product_sub_category;
 private $_product_detail_url;
+private $_rating;
 
 public function SetProductId($_product_id){
 	$this->_product_id=$_product_id;
@@ -62,10 +63,8 @@ public function SetEmiDetails($_product_emai_details){
 }
 public function GetEmiDetails(){
 	return $this->_product_emai_details;
-	
 
 }
-
 
 public function SetProductFeatures($_product_features){
 	$this->_product_features=$_product_features;
@@ -73,7 +72,6 @@ public function SetProductFeatures($_product_features){
 public function GetProductFeatures(){
 	return $this->_product_features;
 }
-
 
 public function SetImgUrl($_img_url){
 	return $this->_img_url=$_img_url;
@@ -102,6 +100,13 @@ public function SetProductDetailUrl($_product_detail_url){
 }
 public function GetProductDetailUrl(){
 	return $this->_product_detail_url;
+}
+
+public function SetProductRating($_product_rating){
+	$this->_rating=$_product_rating;
+}
+public function GetProductRating(){
+	return $this->_rating;
 }
 
 function __construct(){

@@ -56,6 +56,7 @@ class DataaccessHelper
             
            try
             {
+               
             
                 $connection = mysql_connect($this->host, $this->user, $this->pass) or die('Unable to connect!');
                 

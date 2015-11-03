@@ -7,8 +7,7 @@ class DataaccessHelper
          public  $pass = '';
          public  $db = 'snapdeal';
 		// Yest commit from mohasin
-		//Test commit from sohel
-     
+		//Test commit from sohel   
         public function ExecuteNonQuery($sql)
         {
             //$RowsAffected = 0;
