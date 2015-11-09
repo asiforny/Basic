@@ -4,13 +4,16 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
 include_once ('../Manager/clsProductsManager.php');
 
-$url="file:///C:/xampp/htdocs/targets/testhtml.html";
+$url="file:///C:/xampp/htdocs/targets/testDebugApple.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
 //echo $innerHtml;
 
-foreach($innerHtml->find('div[class=product_grid_row]  div[class=productWrapper] div[class=hoverProductWrapper product-txtWrapper]') as $item)
+
+
+
+foreach($innerHtml->find('div[class=product_grid_row]') as $item)
  {                                                             
    
         //div[class=product_grid_cont hoverProdCont4Grid gridLayout4]
@@ -18,12 +21,15 @@ foreach($innerHtml->find('div[class=product_grid_row]  div[class=productWrapper]
         /**
          * PLease add the category & SubCategory
          */
+        
+        //echo "URL ::". $innerHtml->find("div[class=productWrapper] a",0)->href;
         $SingleProduct->SetProductCategory("Electronics");
         $SingleProduct->SetProductSubCategory("Micro-Oven");
         
-        $SingleProduct->SetProductDetailUrl($item->find("a[class=hit-ss-logger somn-track prodLink hashAdded]",0)->href);
+        $SingleProduct->SetProductDetailUrl($innerHtml->find("div[class=productWrapper] a",0)->href);
+        $SingleProduct->SetImgUrl($item->find("img[class=gridViewImage]",0)->src);
         
-        echo $item->find("a[class=hit-ss-logger somn-track prodLink hashAdded]",0)->href;
+        //echo "ImG URL ::".$item->find("img[class=gridViewImage]",0)->src;
         
 	foreach($item->find('p[class=product-title]') as $title){	
 			$SingleProduct->SetProductName($title->plaintext);
