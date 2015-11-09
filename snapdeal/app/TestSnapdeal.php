@@ -4,7 +4,7 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
 include_once ('../Manager/clsProductsManager.php');
 
-$url="file:///C:/xampp/htdocs/targets/testhtml.html";
+$url="file:///C:/wamp/www/snapdeal/target/try1.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
@@ -18,10 +18,10 @@ foreach($innerHtml->find('div[class=product_grid_row]  div[class=productWrapper]
         /**
          * PLease add the category & SubCategory
          */
-        $SingleProduct->SetProductCategory("Electronics");
-        $SingleProduct->SetProductSubCategory("Micro-Oven");
+        $SingleProduct->SetProductCategory("Laptops & 2-in-1");
+        $SingleProduct->SetProductSubCategory("HP");
         
-        $SingleProduct->SetProductDetailUrl($item->find("a[class=hit-ss-logger somn-track prodLink hashAdded]",0)->href);
+        $SingleProduct->SetProductDetailUrl($item->find("a[class=hit-ss-logger somn-track prodLink]",0)->href);
         
         echo $item->find("a[class=hit-ss-logger somn-track prodLink hashAdded]",0)->href;
         
