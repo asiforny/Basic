@@ -173,7 +173,7 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $item)
     
       
        $DataAccess = new DataaccessHelper();     
-     //  clsProductsManager::InsertProducts($SingleProduct);
+      clsProductsManager::InsertProducts($SingleProduct);
       
 }
 
