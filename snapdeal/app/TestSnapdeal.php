@@ -1,4 +1,5 @@
 <?php
+define('MAX_FILE_SIZE', 6000000000000000000);
 set_time_limit(0);
 include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
