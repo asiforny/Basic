@@ -4,13 +4,13 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
 include_once ('../Manager/clsProductsManager.php');
 
-$url="file:///C:/xampp/htdocs/targets/hp_all.html";
+$url="file:///C:/xampp/htdocs/targets/badminton.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
 //echo $innerHtml;
 
-
+//echo 'Now:       '. date('Y-m-d') ."\n";
 
 
 foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $item)
@@ -24,8 +24,8 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]'
          */
         
         //echo "URL ::". $innerHtml->find("div[class=productWrapper] a",0)->href;
-        $SingleProduct->SetProductCategory("Electronics");
-        $SingleProduct->SetProductSubCategory("Micro-Oven");
+        $SingleProduct->SetProductCategory("Sports");
+        $SingleProduct->SetProductSubCategory("Badminton");
         
         if($item->find('div[class=product-image prodSoldout]')){
 
@@ -175,6 +175,11 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]'
        clsProductsManager::InsertProducts($SingleProduct);
       
 }
+
+
+//echo 'Last :       '. date('Y-m-d') ."\n";
+
+
 
 
 ?>
