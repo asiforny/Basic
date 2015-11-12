@@ -4,7 +4,7 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
 include_once ('../Manager/clsProductsManager.php');
 
-$url="file:///C:/xampp/htdocs/targets/badminton.html";
+#$url="file:///C:/xampp/htdocs/targets/badminton.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
@@ -12,6 +12,7 @@ $SingleProduct=NULL;
 
 //echo 'Now:       '. date('Y-m-d') ."\n";
 
+$counter =0;
 
 foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $item)
  {                                                             
@@ -173,9 +174,12 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]'
       
        $DataAccess = new DataaccessHelper();     
        clsProductsManager::InsertProducts($SingleProduct);
+	   
+	   $counter++;
       
 }
 
+echo "Total inserted :".$counter;
 
 //echo 'Last :       '. date('Y-m-d') ."\n";
 
