@@ -13,7 +13,7 @@ $SingleProduct=NULL;
 
 
 
-foreach($innerHtml->find('div[class=product_grid_row]') as $item)
+foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $item)
  {                                                             
    
         //echo $item;
@@ -172,7 +172,7 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $item)
     
       
        $DataAccess = new DataaccessHelper();     
-     //  clsProductsManager::InsertProducts($SingleProduct);
+       clsProductsManager::InsertProducts($SingleProduct);
       
 }
 
