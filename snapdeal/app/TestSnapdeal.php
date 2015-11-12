@@ -4,7 +4,7 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/clsProduct.php');
 include_once ('../Manager/clsProductsManager.php');
 
-#$url="file:///C:/xampp/htdocs/targets/badminton.html";
+$url="file:///C:/xampp/htdocs/targets/try.html";
 $innerHtml = file_get_html($url);
 $ProductArray=NULL;
 $SingleProduct=NULL;
@@ -14,7 +14,7 @@ $SingleProduct=NULL;
 
 $counter =0;
 
-foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $mitem)
+foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
  {                   
 	foreach($mitem->find('div[class=productWrapper]') as $item)
     {
