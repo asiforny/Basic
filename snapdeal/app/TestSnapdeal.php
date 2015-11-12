@@ -14,9 +14,10 @@ $SingleProduct=NULL;
 
 $counter =0;
 
-foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $item)
- {                                                             
-   
+foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]') as $mitem)
+ {                   
+	foreach($mitem->find('div[class=productWrapper]') as $item)
+    {
         //echo $item;
 
          $SingleProduct=new product();
@@ -174,12 +175,13 @@ foreach($innerHtml->find('div[class=product_grid_row] div[class=productWrapper]'
       
        $DataAccess = new DataaccessHelper();     
        clsProductsManager::InsertProducts($SingleProduct);
+	   }
 	   
 	   $counter++;
       
 }
 
-echo "Total inserted :".$counter;
+echo "Total inserted :".$counter*3;
 
 //echo 'Last :       '. date('Y-m-d') ."\n";
 
