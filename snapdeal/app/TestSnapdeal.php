@@ -101,7 +101,7 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
         }
        
         else{                
-                            $SingleProduct->SetProductDetailUrl($innerHtml->find("div[class=productWrapper] a",0)->href);
+                            $SingleProduct->SetProductDetailUrl($item->find("div[class=productWrapper] a",0)->href);
                             $SingleProduct->SetImgUrl($item->find("img[class=gridViewImage]",0)->src);        
                             foreach($item->find('p[class=product-title]') as $title){	
                                             $SingleProduct->SetProductName($title->plaintext);
