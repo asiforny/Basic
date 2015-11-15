@@ -31,7 +31,7 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
         
         if($item->find('div[class=product-image prodSoldout]')){
 //product-image
-                            $SingleProduct->SetProductDetailUrl($item->find("div[class=product-image prodSoldout] a[class=hit-ss-logger somn-track prodLink]",0)->href);
+                            $SingleProduct->SetProductDetailUrl($item->find("a",0)->href);
                             $SingleProduct->SetImgUrl($item->find("div[class=productWrapper] div[class=product-image prodSoldout] a img",0)->src);        
                             foreach($item->find('p[class=product-title]') as $title){	
                                             $SingleProduct->SetProductName($title->plaintext);
@@ -102,7 +102,7 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
         }
        
         else{                
-                            $SingleProduct->SetProductDetailUrl($item->find("div[class=product-image] a[class=hit-ss-logger somn-track prodLink]",0)->href);
+                            $SingleProduct->SetProductDetailUrl($item->find("a",0)->href);
                             $SingleProduct->SetImgUrl($item->find("img[class=gridViewImage]",0)->src);        
                             foreach($item->find('p[class=product-title]') as $title){	
                                             $SingleProduct->SetProductName($title->plaintext);
