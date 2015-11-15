@@ -30,8 +30,8 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
         $SingleProduct->SetProductSubCategory("Badminton");
         
         if($item->find('div[class=product-image prodSoldout]')){
-
-                            $SingleProduct->SetProductDetailUrl($item->find("a[class=hit-ss-logger somn-track prodLink]",0)->href);
+//product-image
+                            $SingleProduct->SetProductDetailUrl($item->find("div[class=product-image prodSoldout] a[class=hit-ss-logger somn-track prodLink]",0)->href);
                             $SingleProduct->SetImgUrl($item->find("div[class=productWrapper] div[class=product-image prodSoldout] a img",0)->src);        
                             foreach($item->find('p[class=product-title]') as $title){	
                                             $SingleProduct->SetProductName($title->plaintext);
@@ -94,14 +94,15 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
                                 $SingleProduct->SetProductFeatures("NA");
                             }                          
 
-            echo 'This is SOLD OUT PRODUCT';
+    /*        echo 'This is SOLD OUT PRODUCT';
             echo '<pre>';
             print_r($SingleProduct);         
             echo '<pre>';
+	*/
         }
        
         else{                
-                            $SingleProduct->SetProductDetailUrl($item->find("a[class=hit-ss-logger somn-track prodLink]",0)->href);
+                            $SingleProduct->SetProductDetailUrl($item->find("div[class=product-image] a[class=hit-ss-logger somn-track prodLink]",0)->href);
                             $SingleProduct->SetImgUrl($item->find("img[class=gridViewImage]",0)->src);        
                             foreach($item->find('p[class=product-title]') as $title){	
                                             $SingleProduct->SetProductName($title->plaintext);
@@ -164,12 +165,15 @@ foreach($innerHtml->find('div[class=product_grid_row]') as $mitem)
                                 $SingleProduct->SetProductFeatures("NA");
                             }
                             
-                            echo 'This is NOT SOLD OUT PRODUCT';
+                    /*        echo 'This is NOT SOLD OUT PRODUCT';
                             echo '<pre>';
                             print_r($SingleProduct);         
                             echo '<pre>';
+					*/
                             //echo $SingleProduct->GetProductDetailUrl();
-                            //echo $SingleProduct->GetProductPrice()."dis-price".$SingleProduct->GetProductBeforeDiscounePrice()."dis_percen".$SingleProduct->GetDiscountDetails()."</br>"."EMI Has:".$SingleProduct->GetEmi()."EMI Details".$SingleProduct->GetEmiDetails()."Features : ".$SingleProduct->GetProductFeatures()."HREF: ".$SingleProduct->GetProductDetailUrl();       
+							echo "<hr></br>";
+                            echo $SingleProduct->GetProductPrice()."dis-price".$SingleProduct->GetProductBeforeDiscounePrice()."dis_percen".$SingleProduct->GetDiscountDetails()."</br>"."EMI Has:".$SingleProduct->GetEmi()."EMI Details".$SingleProduct->GetEmiDetails()."Features : ".$SingleProduct->GetProductFeatures()."HREF: ".$SingleProduct->GetProductDetailUrl();       
+							echo "<hr></br>";
        }
     
       
