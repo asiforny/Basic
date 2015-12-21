@@ -7,6 +7,7 @@
 			private $product_id;	
 			private $product_spec_type;
 			private $product_data;
+			private $table_name;
 			
 			
 			public function SetId($id)
@@ -43,6 +44,15 @@
 			public function GetProductData()
 			{
 				return $this->product_data;
+			}
+			
+			public function SetTableName($table_name)
+			{
+					$this->table_name=$table_name;
+			}
+			public function GetTableName()
+			{
+				return $this->table_name;
 			}
 			
 			function __construct()
