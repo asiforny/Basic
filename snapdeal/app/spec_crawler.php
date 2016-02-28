@@ -4,29 +4,39 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/cls_product_spec.php');
 include_once ('../Manager/clsProductSpecManager.php');
 
+$TableName = "antiques_&_collectibles";
+$ProductUrls=clsProductSpecManager::GetAllProductURL($TableName);
+foreach($ProductUrls as $temp_URL){
 
+	if($temp_URL!=NULL)
+	{
+		//echo "<pre>";
+		//print_r ($temp_URL);
+		//echo "<pre>";
+		$url=$temp_URL['product_details_url'];
+		
+		$id=$temp_URL['product_id'];
+		
+		echo $url.">>".$id."</br>";
+		
+		
+		GetUrlData($url,$id);
+		
+	}
+}
 
-$url="file:///C:/Users/simon/Desktop/try1.html";
 $innerHtml = file_get_html($url);
-
 $ProductArray=NULL;
 $SingleProduct=NULL;
-//echo $innerHtml;
-
-//return;
-//echo 'Now:       '. date('Y-m-d') ."\n";
-
-$counter =0;
+echo $innerHtml;
+echo "Test2";
 
 foreach($innerHtml->find('div[class=comp comp-product-specs]') as $mitem)
  {
 
- //echo $mitem;
-
-  //return;
-
   $SingleProduct=new productspec();
-  $SingleProduct->SetProductID(101);        
+  $SingleProduct->SetProductID($productId);
+  $SingleProduct->SetTableName($TableName);  
 	foreach($mitem->find('div[class=spec-section expanded]') as $item)
     {      
         foreach($item->find('div[class=spec-title-wrp]') as $item_title){
@@ -84,17 +94,12 @@ foreach($innerHtml->find('div[class=comp comp-product-specs]') as $mitem)
               }
             }		
         }
-        echo "<pre>";
-          print_r($SingleProduct);
-        echo "</pre>";
-        echo "<hr></br>";
-         
        $DataAccess = new DataaccessHelper();     
        clsProductSpecManager::InsertProducts($SingleProduct);
     }
-
-
-	 }
+ 
+}
+}
 
 	   
 ?>
