@@ -4,39 +4,29 @@ include_once('../simple_html_dom.php');
 include_once ('../objects/cls_product_spec.php');
 include_once ('../Manager/clsProductSpecManager.php');
 
-$TableName = "antiques_&_collectibles";
-$ProductUrls=clsProductSpecManager::GetAllProductURL($TableName);
-foreach($ProductUrls as $temp_URL){
 
-	if($temp_URL!=NULL)
-	{
-		//echo "<pre>";
-		//print_r ($temp_URL);
-		//echo "<pre>";
-		$url=$temp_URL['product_details_url'];
-		
-		$id=$temp_URL['product_id'];
-		
-		echo $url.">>".$id."</br>";
-		
-		
-		GetUrlData($url,$id);
-		
-	}
-}
 
-$innerHtml = file_get_html($url);
+//$url="file:///C:/Users/simon/Desktop/try1.html";
+
+$html_snippet =$_GET['value'];
+$table_name =$_GET['tablename'];//."_&_collectibles";  // have to use it later. this is used for spec table
+//$table_name_currenttable ="bicycles"; // this will come from the post later
+$product_id =$_GET['id'];
+//$innerHtml = file_get_html($url);
+$innerHtml = str_get_html($html_snippet);
+
+//echo $html_snippet;
+//echo $table_name;
+//echo $product_id;
+
 $ProductArray=NULL;
 $SingleProduct=NULL;
-echo $innerHtml;
-echo "Test2";
+$counter =0;
 
 foreach($innerHtml->find('div[class=comp comp-product-specs]') as $mitem)
  {
-
   $SingleProduct=new productspec();
-  $SingleProduct->SetProductID($productId);
-  $SingleProduct->SetTableName($TableName);  
+  $SingleProduct->SetProductID($product_id);        
 	foreach($mitem->find('div[class=spec-section expanded]') as $item)
     {      
         foreach($item->find('div[class=spec-title-wrp]') as $item_title){
@@ -48,14 +38,14 @@ foreach($innerHtml->find('div[class=comp comp-product-specs]') as $mitem)
 
         if($item_body->find('ul'))
 		{
-                                    $type_list_data_combined="";
+                    $type_list_data_combined="";
             
-                                      foreach ($item_body->find('ul li') as $item_spec_li_data) {
-                                                  //echo "This list data: ". $item_spec_li_data;
-                                                  $type_list_data_combined.=$item_spec_li_data->plaintext .",";
-                                             }                                          
-                                          //echo "List Combined data : ". $type_list_data_combined;     
-                                          $SingleProduct->SetProductData(rtrim($type_list_data_combined, ","));                                        
+	                 foreach ($item_body->find('ul li') as $item_spec_li_data) {
+	                              //echo "This list data: ". $item_spec_li_data;
+                        $type_list_data_combined.=$item_spec_li_data->plaintext .",";
+                     }                                          
+					 //echo "List Combined data : ". $type_list_data_combined;     
+                     $SingleProduct->SetProductData(rtrim($type_list_data_combined, ","));                                        
 		}
         else {
               //echo "this is full tex :".$item_body;              
@@ -94,11 +84,16 @@ foreach($innerHtml->find('div[class=comp comp-product-specs]') as $mitem)
               }
             }		
         }
+      //  echo "<pre>";
+      //  print_r($SingleProduct);
+      //  echo "</pre>";
+       // echo "<hr></br>";
+         
        $DataAccess = new DataaccessHelper();     
-       clsProductSpecManager::InsertProducts($SingleProduct);
+       $id = clsProductSpecManager::InsertProducts($SingleProduct,$table_name);
+	   clsProductSpecManager::UpdateIsCompleted($table_name,$product_id);
+	   echo $id;
     }
- 
-}
 }
 
 	   
